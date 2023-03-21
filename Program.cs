@@ -15,7 +15,8 @@ namespace Sample2
             Console.WriteLine(personne.Hello(false));
 
             var resizer = new PhotoResizer();
-            resizer.ResizedAnImage("./img/image1.png");
+            //resizer.ResizeAnImage("./img/image1.png");
+            resizer.ResizeSomeImages(new string[] { "./img/image1.png", "./img/image2.png" });
         }
     }
 }
