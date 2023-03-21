@@ -16,7 +16,15 @@ namespace Sample2
 
             var resizer = new PhotoResizer();
             //resizer.ResizeAnImage("./img/image1.png");
-            resizer.ResizeSomeImages(new string[] { "./img/image1.png", "./img/image2.png" });
+            resizer.ResizeSomeImages(
+                new string[] { "./img/image1.png", "./img/image2.png" },
+                parallel: true
+            );
+            resizer.ResizeSomeImages(
+                new string[] { "./img/image1.png", "./img/image2.png" },
+                parallel: false
+            );
+            resizer.ResizeFromFolder("./img");
         }
     }
 }
