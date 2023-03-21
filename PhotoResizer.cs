@@ -41,7 +41,7 @@ public class PhotoResizer
     {
         var filename = path.Split("/").Last().Split(".").First();
         var extension = path.Split("/").Last().Split(".").Last();
-        if (extension == "png" || extension == "jpg")
+        if (extension == "png" || extension == "jpg" || extension == "jpeg")
         {
             this.Resize(path, filename, extension);
         }
