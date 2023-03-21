@@ -12,20 +12,16 @@ public class PhotoResizer
     {
         Console.WriteLine($"Image to process: {paths.Length}");
         var watch = new System.Diagnostics.Stopwatch();
-
+        watch.Start();
         if (!parallel)
         {
-            watch.Start();
             foreach (var path in paths)
             {
                 this.ResizeAnImage(path);
             }
-            watch.Stop();
-            Console.WriteLine($"Sequential execution Time: {watch.ElapsedMilliseconds} ms");
         }
         else
         {
-            watch.Start();
             Parallel.ForEach(
                 paths,
                 path =>
@@ -33,9 +29,9 @@ public class PhotoResizer
                     this.ResizeAnImage(path);
                 }
             );
-            watch.Stop();
-            Console.WriteLine($"Parallel execution Time: {watch.ElapsedMilliseconds} ms");
         }
+        watch.Stop();
+        Console.WriteLine($"Sequential execution Time: {watch.ElapsedMilliseconds} ms");
     }
 
     public void ResizeAnImage(string path)
