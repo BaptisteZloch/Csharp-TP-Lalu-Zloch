@@ -3,6 +3,9 @@ using SixLabors.ImageSharp.Processing;
 
 public class PhotoResizer
 {
+    public int TargetWidth { get; set; } = 1024;
+    public int TargetHeight { get; set; } = 1024;
+
     public void ResizeFromFolder(string folderPath)
     {
         this.ResizeSomeImages(System.IO.Directory.EnumerateFiles(folderPath, "*.*").ToArray());
@@ -44,11 +47,11 @@ public class PhotoResizer
         }
     }
 
-    public void Resize(string path, string filename, string extension, int factor = 2)
+    public void Resize(string path, string filename, string extension)
     {
         using (Image image = Image.Load(path))
         {
-            image.Mutate(x => x.Resize(image.Width / factor, image.Height / factor));
+            image.Mutate(x => x.Resize(this.TargetWidth, this.TargetHeight));
             image.Save($"./resized_imgs/{filename}_resized.{extension}");
         }
     }
